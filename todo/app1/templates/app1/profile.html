@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .action-buttons {
+            margin-top: 10px;
+        }
+
+        .action-buttons button {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Task List</h2>
+    <ul>
+        {% if tasks %}
+            {% for task in tasks %}
+                <li>
+                    <strong>{{ task.title }}</strong> - {% if task.completed %}Completed{% else %}Pending{% endif %}
+                    <div class="action-buttons">
+                        <button type="button" onclick="window.location.href='{% url 'update_task' task.id %}'">Update</button>
+                        <button type="button" onclick="window.location.href='{% url 'delete_task' task.id %}'">Delete</button>
+                        <button type="button" onclick="window.location.href='{% url 'task_details' task.id %}'">Details</button>
+                    </div>
+                </li>
+            {% endfor %}
+        {% else %}
+            <li>No tasks available</li>
+        {% endif %}
+    </ul>
+    <button type="button" onclick="window.location.href='{% url 'add_task' %}'">Add Task</button>
+    <button type="button" onclick="window.location.href='{% url 'logout' %}'">Logout</button>
+</body>
+
+</html>

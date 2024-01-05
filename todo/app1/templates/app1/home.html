@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+        }
+        
+        main {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 0 10px;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        
+        #loginBtn {
+            background-color: #4CAF50;
+            color: #fff;
+        }
+        
+        #signupBtn {
+            background-color: #2196F3;
+            color: #fff;
+        }
+        
+        button:hover {
+            background-color: #555;
+        }
+        
+        form {
+            margin-top: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+        
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Todo App</h1>
+    </header>
+
+    <main>
+        <p>Welcome to the Todo App. Please log in or sign up to get started.</p>
+        <button type="button" onclick="window.location.href='{% url 'signup' %}'">SigUp</button>
+        <button type="button" onclick="window.location.href='{% url 'login' %}'">LogIn</button>
+
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            box-sizing: border-box;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #2ecc71;
+            color: #ffffff;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #27ae60;
+        }
+
+        small {
+            margin-top: 10px;
+            display: block;
+            font-size: 12px;
+            color: #e74c3c; /* Red color for error messages */
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" method="POST" novalidate>
+        {% csrf_token %}
+
+        {%if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <p>{{error}}</p>
+            {% endfor %}
+        {% endif %}
+
+        {% for fm in form %}
+            <label for="{{ fm.id_for_label }}">{{ fm.label_tag }}</label>
+            {{ fm }} {{ fm.errors | striptags }}
+        {% endfor %}
+        
+        <div style="display: flex; justify-content: space-between;">
+            <button type="submit">Add User</button>
+            <button type="button" onclick="window.location.href='{% url 'login' %}'">Click to Login</button>
+        </div>
+    </form>
+</body>
+
+</html>

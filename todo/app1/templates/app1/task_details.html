@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Details</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: grey;
+        }
+
+        .task-details-container {
+            text-align: left;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .task-detail {
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: #2ecc71;
+            color: #ffffff;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #27ae60;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="task-details-container">
+        <h2>Task Details</h2>
+        <div class="task-detail">
+            <strong>Title:</strong> {{ task.title }}
+        </div>
+        <div class="task-detail">
+            <strong>Description:</strong> {{ task.description }}
+        </div>
+        <div class="task-detail">
+            <strong>Deadline:</strong> {{ task.deadline }}
+        </div>
+        <div class="task-detail">
+            <strong>Status:</strong> {% if task.completed %}Completed{% else %}Pending{% endif %}
+        </div>
+
+        <!-- Add more details as needed -->
+        <button type="button" onclick="window.location.href='{% url 'uprofile' %}'" class="back-button">Back to Profile</button>
+        <!--<a href="{% url 'uprofile' %}">Back to Profile</a>-->
+    </div>
+</body>
+
+</html>
