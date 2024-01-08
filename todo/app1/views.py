@@ -31,7 +31,6 @@ def ulogin(request):
         print("fm is Valid ----------------->",fm.is_valid())
         if fm.is_valid():
             print("fm is Valid ----------------->",fm.is_valid())
-            # Use the correct field to get the email
             uemail = fm.cleaned_data['username']
             upass = fm.cleaned_data['password']
             
@@ -48,26 +47,7 @@ def ulogin(request):
         fm = AuthenticationForm()
     
     return render(request, 'app1/login.html', {'form': fm})
-    #if request.method == 'POST':
-    #    print("RRRRRRRRRR", request)
-    #    fm = AuthenticationForm(request=request, data=request.POST)
-    #    print("fm",fm.is_valid())
-    #    if fm.is_valid():
-    #        print("fmaaaaaaaaaaaaaaaa",fm.is_valid())
-    #        
-    #        uemail = fm.cleaned_data['username']
-    #        upass = fm.cleaned_data['password']
-    #        print("uemail,upass",uemail,upass)
-    #        user = authenticate(email=uemail, password=upass)
-    #        
-    #        if user is not None:
-    #            if user.is_superuser == False:
-    #                login(request, user)
-    #                return HttpResponseRedirect('/profile/')
-    #            return render(request, 'app1/login.html', {'form': fm})
-    #else:
-    #    fm = AuthenticationForm()
-    #return render(request, 'app1/login.html', {'form': fm})
+
 
 
 # User Prfile
